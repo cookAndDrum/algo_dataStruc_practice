@@ -2,6 +2,11 @@ public class Node {
   private String element;
   private Node next;
 
+  public Node(String s) {
+    element = s;
+    next = null;
+  }
+
   public Node(String s, Node n) {
     element = s;
     next = n;
