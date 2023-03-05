@@ -42,7 +42,7 @@ class ModDLinkedList {
   public SpeDNode mainNodeTraversal(SpeDNode targetMainNode) {
     SpeDNode mainWalker = head;
 
-    while (mainWalker != null && mainWalker.getElement() != targetMainNode.getElement()) {
+    while (mainWalker != null && mainWalker != targetMainNode) {
       mainWalker = mainWalker.getDown();
     }
 
@@ -56,7 +56,7 @@ class ModDLinkedList {
   public Node subNodeTraversal(SpeDNode mainNode, Node target) {
     Node subWalker = mainNode.getNext(); // mainNode.next is head of subNode
 
-    while (subWalker != null && subWalker.getElement() != target.getElement()) {
+    while (subWalker != null && subWalker != target) {
       subWalker = subWalker.getNext();
     }
 
@@ -96,6 +96,7 @@ class ModDLinkedList {
     Node subWalker = mainWalker.getNext();
 
     if (subWalker == null) {
+      newNode.setNext(null);
       mainWalker.setNext(newNode);
       return;
     }
@@ -105,6 +106,7 @@ class ModDLinkedList {
       subWalker = subWalker.getNext();
     }
 
+    newNode.setNext(null);
     subWalker.setNext(newNode);
   }
 
@@ -287,7 +289,7 @@ class ModDLinkedList {
     Node a4 = new Node("A4");
     list.addSubNodeFirst(a4, n1);
 
-    // list.removeSubNodeFirst(n1);
+    list.removeSubNodeFirst(n1);
 
     Node a5 = new Node("A5");
     list.addSubNodeLast(a5, n1);
